@@ -6,12 +6,13 @@ package main
 
 import (
 	"encoding/binary"
-	diverter2 "github.com/jamesits/go-windivert/pkg/diverter"
 	"log"
 	"os"
 	"os/signal"
 	"sync"
 	"time"
+
+	diverter2 "github.com/gone-lib/go-windivert/pkg/diverter"
 )
 
 var d *diverter2.Diverter

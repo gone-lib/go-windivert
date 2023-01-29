@@ -1,4 +1,4 @@
-module github.com/jamesits/go-windivert
+module github.com/gone-lib/go-windivert
 
 go 1.19
 

@@ -2,7 +2,7 @@
 
 Go bindings for [WinDivert](https://github.com/basil00/Divert).
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Jamesits/go-windivert.svg)](https://pkg.go.dev/github.com/Jamesits/go-windivert)
+[![Go Reference](https://pkg.go.dev/badge/github.com/gone-lib/go-windivert.svg)](https://pkg.go.dev/github.com/gone-lib/go-windivert)
 
 ## Features
 
@@ -15,7 +15,7 @@ TODO:
 ## Usage
 
 ```shell
-go get github.com/jamesits/go-windivert
+go get github.com/gone-lib/go-windivert
 ```
 
 Examples using the high-level interface (channel based):

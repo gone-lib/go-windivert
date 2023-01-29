@@ -1,19 +1,19 @@
 package diverter
 
 import (
-	ffi2 "github.com/jamesits/go-windivert/pkg/ffi"
+	"github.com/gone-lib/go-windivert/pkg/ffi"
 )
 
 const DefaultDLLPath = "WinDivert.dll"
-const DefaultFilter = ffi2.Filter("true")
+const DefaultFilter = ffi.Filter("true")
 
 type Config struct {
 	DLLPath string
 
-	Filter   ffi2.Filter
-	Layer    ffi2.Layer
-	Priority ffi2.Priority
-	Flag     ffi2.Flag
+	Filter   ffi.Filter
+	Layer    ffi.Layer
+	Priority ffi.Priority
+	Flag     ffi.Flag
 
 	SendChanSize      uint
 	RecvChanSize      uint
@@ -21,9 +21,9 @@ type Config struct {
 }
 
 func (c *Config) Defaults() {
-	c.Layer = ffi2.Network
-	c.Priority = ffi2.WinDivertPriorityDefault
-	c.Flag = ffi2.Sniff | ffi2.ReceiveOnly | ffi2.Fragments
+	c.Layer = ffi.Network
+	c.Priority = ffi.WinDivertPriorityDefault
+	c.Flag = ffi.Sniff | ffi.ReceiveOnly | ffi.Fragments
 }
 
 func (c *Config) fixMissingValue() {
@@ -36,7 +36,7 @@ func (c *Config) fixMissingValue() {
 	}
 
 	if c.ReceiveBufferSize <= 0 {
-		c.ReceiveBufferSize = ffi2.WinDivertMTUMax // for loopback traffic, packet size might > 16384
+		c.ReceiveBufferSize = ffi.WinDivertMTUMax // for loopback traffic, packet size might > 16384
 	}
 }
 
@@ -44,6 +44,6 @@ func NewDefaultDiverterConfig(dllPath string, filter string) (ret *Config) {
 	ret = &Config{}
 	ret.Defaults()
 	ret.DLLPath = dllPath
-	ret.Filter = ffi2.Filter(filter)
+	ret.Filter = ffi.Filter(filter)
 	return
 }

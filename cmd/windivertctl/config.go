@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/jamesits/go-windivert/pkg/ffi"
+	"github.com/gone-lib/go-windivert/pkg/ffi"
 )
 
 var filter = ffi.Filter("true")

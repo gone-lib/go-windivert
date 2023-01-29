@@ -7,15 +7,16 @@ package main
 
 import (
 	"fmt"
-	"github.com/google/gopacket"
-	"github.com/google/gopacket/layers"
-	diverter2 "github.com/jamesits/go-windivert/pkg/diverter"
-	"github.com/jamesits/go-windivert/pkg/ffi"
 	"log"
 	"os"
 	"os/signal"
 	"sync"
 	"time"
+
+	diverter2 "github.com/gone-lib/go-windivert/pkg/diverter"
+	"github.com/gone-lib/go-windivert/pkg/ffi"
+	"github.com/google/gopacket"
+	"github.com/google/gopacket/layers"
 )
 
 var d *diverter2.Diverter

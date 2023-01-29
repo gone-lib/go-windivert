@@ -6,11 +6,13 @@ package main
 
 import (
 	"fmt"
-	diverter2 "github.com/jamesits/go-windivert/pkg/diverter"
-	"github.com/jamesits/go-windivert/pkg/ffi"
 	"os"
 	"os/signal"
 	"sync"
+
+	diverter2 "github.com/gone-lib/go-windivert/pkg/diverter"
+	"github.com/gone-lib/go-windivert/pkg/ffi"
+	"github.com/google/gopacket"
 )
 
 var d *diverter2.Diverter
@@ -54,6 +56,8 @@ func main() {
 
 	for pkt := range d.RecvChan() {
 		fmt.Println(pkt)
+		packet := pkt.Decode(gopacket.Default)
+		fmt.Println(packet)
 		d.SendChan() <- pkt
 	}
 }

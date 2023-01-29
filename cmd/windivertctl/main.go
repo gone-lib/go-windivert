@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github.com/jamesits/go-windivert/pkg/ffi"
 	"log"
 	"os"
+
+	"github.com/gone-lib/go-windivert/pkg/ffi"
 )
 
 func printUsage() {
