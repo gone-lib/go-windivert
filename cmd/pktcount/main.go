@@ -13,13 +13,13 @@ import (
 	"sync"
 	"time"
 
-	diverter2 "github.com/gone-lib/go-windivert/pkg/diverter"
+	"github.com/gone-lib/go-windivert/pkg/diverter"
 	"github.com/gone-lib/go-windivert/pkg/ffi"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
 )
 
-var d *diverter2.Diverter
+var d *diverter.Diverter
 var cleanupOnce sync.Once
 var dataFlushLock sync.Mutex
 var total uint
@@ -81,7 +81,7 @@ func cleanup() {
 func main() {
 	var err error
 
-	d, err = diverter2.New(diverter2.NewDefaultDiverterConfig("WinDivert.dll", "true"))
+	d, err = diverter.New(diverter.NewDefaultDiverterConfig("WinDivert.dll", "true"))
 	if err != nil {
 		panic(err)
 	}

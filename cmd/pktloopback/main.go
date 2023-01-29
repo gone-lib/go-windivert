@@ -10,12 +10,12 @@ import (
 	"os/signal"
 	"sync"
 
-	diverter2 "github.com/gone-lib/go-windivert/pkg/diverter"
+	"github.com/gone-lib/go-windivert/pkg/diverter"
 	"github.com/gone-lib/go-windivert/pkg/ffi"
 	"github.com/google/gopacket"
 )
 
-var d *diverter2.Diverter
+var d *diverter.Diverter
 var cleanupOnce sync.Once
 
 func cleanup() {
@@ -30,13 +30,22 @@ func cleanup() {
 func main() {
 	var err error
 
-	config := diverter2.Config{
+	config := diverter.Config{
 		DLLPath: "WinDivert.dll",
 		Flag:    ffi.Fragments,
-		Filter:  "icmp",
+		// Flag:    ffi.None,
+		Filter: "icmp",
+		// Filter: "true",
+		// Filter: "udp",
+		// Filter: "icmp or icmpv6",
+		// Filter: "udp or icmp or icmpv6",
+		// Filter: "udp.DstPort == 53",
+		// Filter:  "outbound and !loopback and udp",
+		// Filter: "outbound and !loopback and udp and udp.DstPort == 53",
+		// Filter: "outbound and !loopback and udp and udp.DstPort == 53",
 	}
 
-	d, err = diverter2.New(&config)
+	d, err = diverter.New(&config)
 	if err != nil {
 		panic(err)
 	}

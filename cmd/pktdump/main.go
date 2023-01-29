@@ -12,10 +12,10 @@ import (
 	"sync"
 	"time"
 
-	diverter2 "github.com/gone-lib/go-windivert/pkg/diverter"
+	"github.com/gone-lib/go-windivert/pkg/diverter"
 )
 
-var d *diverter2.Diverter
+var d *diverter.Diverter
 var cleanupOnce sync.Once
 
 func cleanup() {
@@ -51,7 +51,7 @@ func main() {
 	})
 
 	// configure WinDivert
-	d, err = diverter2.New(diverter2.NewDefaultDiverterConfig("WinDivert.dll", "true"))
+	d, err = diverter.New(diverter.NewDefaultDiverterConfig("WinDivert.dll", "true"))
 	if err != nil {
 		panic(err)
 	}
